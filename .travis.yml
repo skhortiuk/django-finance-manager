@@ -1,0 +1,23 @@
+dist: trusty
+
+language: python
+python:
+  - "3.6"
+
+before_install:
+  - export DJANGO_SETTINGS_MODULE=finance_manager.settings
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - coverage erase
+  - coverage run --branch --source='.' manage.py test || exit 1
+  - coverage xml -i || exit 1
+
+notifications:
+  email:
+    recipients:
+      - khortiukserhii@ukr.net
+    on_success: always
+on_failure: always
