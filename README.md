@@ -1,2 +1,2 @@
-[![Build Status](https://travis-ci.com/khortiuk/finance-manager.svg?branch=master)](https://travis-ci.com/khortiuk/finance-manager)
-# finance-manager
+[![Build Status](https://travis-ci.com/khortiuk/django-finance-manager.svg?branch=master)](https://travis-ci.com/khortiuk/django-finance-manager)
+# django-finance-manager
