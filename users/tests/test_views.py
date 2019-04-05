@@ -1,4 +1,3 @@
-from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
@@ -22,9 +21,3 @@ class LoginViewTest(SetUpUserMixin, TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('home'))
-
-
-class ResetPasswordTestView(SetUpUserMixin, TestCase):
-
-    def test_reset_done(self):
-        response = self.client
