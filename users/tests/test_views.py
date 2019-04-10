@@ -4,6 +4,8 @@ from django.urls import reverse
 from finance_manager.constants import PASSWORD, USERNAME
 from users.tests.test_mixins import SetUpUserMixin
 
+__all__ = ['LoginViewTest']
+
 
 class LoginViewTest(SetUpUserMixin, TestCase):
 

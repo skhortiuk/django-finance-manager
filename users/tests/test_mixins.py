@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model
 
 from finance_manager.constants import USERNAME, PASSWORD
 
+__all__ = ['SetUpUserMixin']
+
 
 class SetUpUserMixin(object):
 
