@@ -18,7 +18,7 @@ class LoginViewTest(SetUpUserMixin, TestCase):
 
         self.assertEqual(response.status_code, 302)
 
-    def test_redirect_to_home_page_if_the_user_tries_to_login(self):
+    def test_redirect_to_home_page_if_the_logged_on_user_tries_to_login(self):
         response = self.client.get(reverse('login'))
 
         self.assertEqual(response.status_code, 302)
