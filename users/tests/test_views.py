@@ -1,13 +1,18 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
-from finance_manager.constants import PASSWORD, USERNAME
-from users.tests.test_mixins import SetUpUserMixin
+PASSWORD = 'qwerty123N'
+USERNAME = 'insayrex'
 
 __all__ = ['LoginViewTest']
 
 
-class LoginViewTest(SetUpUserMixin, TestCase):
+class LoginViewTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        get_user_model().objects.create_user(username=USERNAME,
+                                             password=PASSWORD)
 
     def setUp(self):
         self.client.login(username=USERNAME, password=PASSWORD)
