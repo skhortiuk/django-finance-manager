@@ -4,6 +4,8 @@ from django.urls import reverse
 from finance_manager.constants import PASSWORD, USERNAME
 from users.tests.test_mixins import SetUpUserMixin
 
+__all__ = ['LoginViewTest']
+
 
 class LoginViewTest(SetUpUserMixin, TestCase):
 
@@ -16,7 +18,7 @@ class LoginViewTest(SetUpUserMixin, TestCase):
 
         self.assertEqual(response.status_code, 302)
 
-    def test_redirect_to_home_page_if_user_logged_in(self):
+    def test_redirect_to_home_page_if_the_logged_on_user_tries_to_login(self):
         response = self.client.get(reverse('login'))
 
         self.assertEqual(response.status_code, 302)

@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 
+__all__ = ['UserLoginView', 'SignUp']
+
 
 class UserLoginView(LoginView):
     def get(self, request, *args, **kwargs):
