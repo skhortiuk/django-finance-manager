@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     'users',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,8 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
+
+# static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]

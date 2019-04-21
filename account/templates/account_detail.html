@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="col-sm-5">
+        <h1>account: {{ account.id }}</h1>
+
+        <p><strong>Author:</strong> {{ account.user }}</p> <!-- author detail link not yet defined -->
+        <p><strong>Type:</strong> {{ account.type_of_currency }}</p>
+        <p><strong>count:</strong> {{ account.count }}</p>
+        <p><strong>Created:</strong> {{ account.created }}</p>
+        <p><strong>IsActive:</strong>{{ account.is_active }}</p>
+        <div class="input-group ">
+            <a class="btn btn-outline-primary"
+               href="{% url 'account-list' %}">Back</a>
+
+            {% if account.is_active %}
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ account.id }}" name="accountId">
+                    <button type="submit" class="btn btn-outline-danger  mb-3 mb-md-0 ml-md-3">Deactivate</button>
+                </form>
+            {% else %}
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ account.id }}" name="accountId">
+                    <button type="submit" class="btn btn-outline-success  mb-3 mb-md-0 ml-md-3">Activate</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
