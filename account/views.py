@@ -15,7 +15,6 @@ class AccountListView(LoginRequiredMixin, ListView):
     model = Account
     template_name = 'account_list.html'
     context_object_name = 'count_list'
-    success_url = reverse_lazy('group_perm-list')
 
     def get_queryset(self):
         return self.request.user.user_account.all()
@@ -43,9 +42,15 @@ class AccountDetailView(DetailView, UpdateView):
     form_class = AccountCreateForm
     template_name = 'account_detail.html'
 
-    def post(self, request, *args, **kwargs):
-        user_id = self.request.POST['accountId']
-        flag = not self.request.user.user_account.get(id=user_id).is_active
-        self.request.user.user_account.filter(id=user_id).update(
-            is_active=flag)
-        return redirect('/counts/' + str(user_id))
+    def post(self, request, **kwargs):
+        account_id = request.POST['accountId']
+        self.change_account_activity(account_id)
+
+        return redirect(f'/accounts/{account_id}')
+
+    def change_account_activity(self, account_id):
+        account = self.request.user.user_account.get(id=account_id)
+        flag = not account.is_active
+        account.is_active = flag
+        account.save(update_fields=["is_active"])
+
