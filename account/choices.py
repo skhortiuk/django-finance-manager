@@ -1,6 +1,6 @@
-__all__ = ['Type_OF_CURRENCY_CHOISES']
+__all__ = ['TYPE_OF_CURRENCY_CHOICES']
 
-Type_OF_CURRENCY_CHOISES = (
+TYPE_OF_CURRENCY_CHOICES = (
     ('USD', 'USD'),
     ('EUR', 'EUR'),
     ('UAN', 'UAH'),

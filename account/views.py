@@ -50,7 +50,5 @@ class AccountDetailView(DetailView, UpdateView):
 
     def change_account_activity(self, account_id):
         account = self.request.user.user_account.get(id=account_id)
-        flag = not account.is_active
-        account.is_active = flag
+        account.is_active = not account.is_active
         account.save(update_fields=["is_active"])
-
