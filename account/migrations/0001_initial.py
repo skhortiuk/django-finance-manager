@@ -7,7 +7,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -18,16 +17,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Account',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('count', models.DecimalField(decimal_places=2, max_digits=12)),
-                ('created', models.DateTimeField(default=datetime.datetime.now)),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                                        serialize=False, verbose_name='ID')),
+                (
+                    'count',
+                    models.DecimalField(decimal_places=2, max_digits=12)),
+                ('created',
+                 models.DateTimeField(default=datetime.datetime.now)),
                 ('is_active', models.BooleanField()),
             ],
         ),
         migrations.CreateModel(
             name='TypeOfCurrency',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                                        serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=3)),
                 ('description', models.CharField(max_length=40)),
             ],
@@ -35,11 +39,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='account',
             name='type_of_currency',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='user_type_of_currency', to='account.TypeOfCurrency'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name='user_type_of_currency',
+                to='account.TypeOfCurrency'),
         ),
         migrations.AddField(
             model_name='account',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='user_account', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='user_account', to=settings.AUTH_USER_MODEL),
         ),
     ]
