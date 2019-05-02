@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Accounts_list{% endblock %}
+
+{% block content %}
+    <div>
+        <a class="btn btn-outline-primary btn-option mb-3" href="{% url 'account-create' %}">Create</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover block-rounded">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">name</th>
+                <th scope="col">typeCurrency</th>
+                <th scope="col">count</th>
+                <th scope="col">is_active</th>
+                <th scope="col">action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for count in count_list %}
+                <tr>
+                    <td class="align-middle"><a
+                            href="{% url 'account-detail' count.id %}">Account {{ count.id }}</a></td>
+                    <td class="align-middle">{{ count.type_of_currency }}</td>
+                    <td class="align-middle">{{ count.count }}</td>
+                    <td class="align-middle">{{ count.is_active }}</td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+
+                            <a class="btn btn-light btn-option mr-lg-4" href="{% url 'account-delete' count.id %}"><i
+                                    class="far fa-trash-alt"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td>No accounts yet.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
