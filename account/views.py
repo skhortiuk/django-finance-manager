@@ -46,7 +46,7 @@ class AccountDetailView(DetailView, UpdateView):
         account_id = request.POST['accountId']
         self.change_account_activity(account_id)
 
-        return redirect(f'/accounts/{account_id}')
+        return redirect(f'/account/{account_id}')
 
     def change_account_activity(self, account_id):
         account = self.request.user.user_account.get(id=account_id)
